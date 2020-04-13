@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /*
+      font-size: 10px === 62.5 % of 16px (1rem) (default browser value)
+  */
+  font-size: 62.5%; // 10 / 16px = 0.625 (62.5%)
+}
+
+body {
+  box-sizing: border-box;
+}

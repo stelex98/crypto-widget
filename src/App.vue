@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <crypto
+      :event             = "event"
+      :pair              = "pair"
+      :subscription      = "subscription"
+      :callbackListeners = "listenWs"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Crypto from './components/crypto/Crypto.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Crypto
+  },
+  methods: {
+    // Data from child component
+    listenWs(cryptoData) {
+      JSON.parse(cryptoData)
+    }
+  },
+  data() {
+    return {
+      event: 'subscribe',
+      pair: [
+          "LTC/XBT",
+          "XBT/USD",
+          "BCH/USD"
+      ],
+      subscription: {
+        name: 'ticker'
+      }
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  @import './scss/main.scss';
 </style>
